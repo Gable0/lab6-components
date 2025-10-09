@@ -5,11 +5,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>DOM RnD</title>
     </head>
+        <style>
+            chat-window {
+                display: block;
+                border: 1px solid rgb(0, 0, 0);
+                height: 300px;
+                width: 400px;
+                background: rgb(193, 193, 193);
+            }
+
+            chat-window p {
+                margin: 0;
+                padding: 5px;
+            }
+        </style>
     <body>
+        <chat-window id="chatWindow"></chat-window>
         <textarea placeholder="Type something here..." rows="2" cols="60" id="messageBox"></textarea> 
         <button id="sendBtn" type="button">Send</button> 
 
-        <script>
+        <script type="module">
+            import { getBotResponse } from './eliza.js';
+            
             document.getElementById('sendBtn').addEventListener('click', function() {
                 send();
             });
@@ -21,23 +38,52 @@
                 }
             }
 
+            function getResponse(message) {
+                return getBotResponse(message); // Using the imported getBotResponse from eliza.js
+            }
+
+            function showResponse(response) {
+                addToChatWindow(response); //adding the response to the chat window
+            }
+
+            function processMessage(message) {
+                log('processing message: ' + message); //logging the message to the console
+                let response = getResponse(message) //creating a response
+                showResponse(response); //alerting the response to the user
+            }
+
             function send() {
                 log('sending...');
 
                 let messageBox = document.getElementById('messageBox'); //getting the value from the text area
                 let message = messageBox.value; //setting that message to a variable
-                alert('You typed: ' + message); //using that variable to show an alert
+                let chatWindow = document.getElementById('chatWindow'); //getting the chat window
+                messageBox.value = ''; //clearing the text area
+                messageBox.focus(); //putting the cursor back in the text area
+                addToChatWindow(message); //adding the message to the chat window
+                processMessage(message); //processing the message
             }
 
+            function addToChatWindow(message){
+                let chatWindow = document.getElementById('chatWindow'); //getting the chat window
+                chatWindow.innerHTML += `<p>${message}</p>`; //adding the message to the chat window
+
+            function processMessage(message){ //sending the message to be processed
+                let response = getResponse(message); //getting a response
+            }
+        }
             function init() {
                 log('Loading App...');
+                getBotResponse
 
-                document.getElementById('sendBtn').addEventListener('click', function() {
-                    send();
-                });
+                    document.getElementById('sendBtn').addEventListener('click', function() {
+                        send();
+                    });
             }
 
             window.addEventListener('DOMContentLoaded', init); // new way of doing it, new school
         </script>
+
+
     </body>
-</html>
+</html> 
