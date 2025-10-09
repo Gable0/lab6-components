@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>DOM RnD</title>
+    </head>
+    <body>
+        <textarea placeholder="Type something here..." rows="2" cols="60" id="messageBox"></textarea> 
+        <button id="sendBtn" type="button">Send</button> 
+
+        <script>
+            document.getElementById('sendBtn').addEventListener('click', function() {
+                send();
+            });
+
+            const DEBUG = false; //change to true to see console logs
+            function log(msg){
+                if (DEBUG) {
+                    console.log(msg);
+                }
+            }
+
+            function send() {
+                log('sending...');
+
+                let messageBox = document.getElementById('messageBox'); //getting the value from the text area
+                let message = messageBox.value; //setting that message to a variable
+                alert('You typed: ' + message); //using that variable to show an alert
+            }
+
+            function init() {
+                log('Loading App...');
+
+                document.getElementById('sendBtn').addEventListener('click', function() {
+                    send();
+                });
+            }
+
+            window.addEventListener('DOMContentLoaded', init); // new way of doing it, new school
+        </script>
+    </body>
+</html>
