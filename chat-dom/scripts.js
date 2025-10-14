@@ -3,6 +3,9 @@ import { getBotResponse } from '../eliza.js';
 const DEBUG = false; // change to true to see console logs
 function log(msg){ if (DEBUG) console.log(msg); }
 
+let messageBoxElement;
+let sendBtnElement;
+
 function getResponse(message) {
     return getBotResponse(message);
 }
@@ -26,27 +29,38 @@ function processMessage(message) {
     setTimeout(() => appendMessage(response, 'bot'), 150);
 }
 
+function updateSendState() {
+    const hasText = messageBoxElement.value.trim().length > 0;
+    sendBtnElement.disabled = !hasText;
+}
+
 function send() {
     log('sending...');
-    const messageBox = document.getElementById('messageBox');
-    const message = messageBox.value.trim();
+    const message = messageBoxElement.value.trim();
     if (!message) return;
-    messageBox.value = '';
-    messageBox.focus();
+    messageBoxElement.value = '';
+    messageBoxElement.focus();
+    updateSendState();
     appendMessage(message, 'user');
     processMessage(message);
 }
 
 function init() {
     log('Loading App...');
-    document.getElementById('sendBtn').addEventListener('click', send);
+    messageBoxElement = document.getElementById('messageBox');
+    sendBtnElement = document.getElementById('sendBtn');
+
+    sendBtnElement.addEventListener('click', send);
+    messageBoxElement.addEventListener('input', updateSendState);
     
-    document.getElementById('messageBox').addEventListener('keydown', (e) => { // allow Enter to send (Shift+Enter for newline)
+    messageBoxElement.addEventListener('keydown', (e) => { // allow Enter to send (Shift+Enter for newline)
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             send();
         }
     });
+
+    updateSendState();
 }
 
 window.addEventListener('DOMContentLoaded', init);

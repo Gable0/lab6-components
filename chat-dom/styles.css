@@ -112,8 +112,8 @@ chat-window p.bot {
 
 #sendBtn {
     padding: 0 24px;
-    background: #e0e3ed;
-    color: #5b6b8c;
+    background: linear-gradient(135deg, #3180ff, #2261d1);
+    color: #ffffff;
     border: none;
     border-radius: 999px;
     cursor: pointer;
@@ -121,6 +121,13 @@ chat-window p.bot {
     font-size: 1rem;
 }
 
-#sendBtn:hover {
-    background: #d6dae5;
+#sendBtn:disabled {
+    background: #e0e3ed;
+    color: #9aa4bc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+#sendBtn:not(:disabled):hover {
+    background: linear-gradient(135deg, #2b6ee5, #1b56b8);
 }
