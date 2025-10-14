@@ -12,7 +12,7 @@
 // Eliza-style response patterns
 const patterns = [
   {
-    pattern: /hello|hi|hey|howdy/i,
+    pattern: /\b(hello|hi|hey|howdy)\b/i,
     responses: [
       "Hello! How are you doing today?",
       "Hi there! What's on your mind?",
@@ -29,7 +29,7 @@ const patterns = [
     ]
   },
   {
-    pattern: /help|what can you do/i,
+    pattern: /(\bhelp\b|what can you do)/i,
     responses: [
       "I'm a simple chatbot built with Eliza-style pattern matching. I can respond to your messages based on keywords. Try asking me questions!",
       "I can have a basic conversation with you. Ask me anything and I'll do my best to respond!",
@@ -111,7 +111,7 @@ const patterns = [
     ]
   },
   {
-    pattern: /I think (.*)/i,
+    pattern: /\bI think\b(?: (.*))?/i,
     responses: [
       "What makes you think $1?",
       "Why do you believe $1?",
@@ -148,7 +148,8 @@ export function getBotResponse(message) {
       // Replace captured groups (e.g., $1, $2) with matched text
       if (match.length > 1) {
         for (let j = 1; j < match.length; j++) {
-          response = response.replace('$' + j, match[j]);
+          const replacement = match[j] && match[j].trim() ? match[j].trim() : 'that';
+          response = response.replace('$' + j, replacement);
         }
       }
 
