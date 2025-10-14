@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>DOM RnD</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="chat-container">
+            <chat-window id="chatWindow"></chat-window>
+            <div class="input-container">
+                <textarea placeholder="Type something here..." rows="2" cols="60" id="messageBox"></textarea>
+                <button id="sendBtn" type="button">Send</button>
+            </div>
+        </div>
+
+        <script type="module">
+            import { getBotResponse } from '../eliza.js';
+
+            const DEBUG = false; // change to true to see console logs
+            function log(msg){ if (DEBUG) console.log(msg); }
+
+            function getResponse(message) {
+                return getBotResponse(message);
+            }
+
+            // append a message node to the chat window with either 'user' or 'bot' class
+            function appendMessage(text, who) {
+                const chatWindow = document.getElementById('chatWindow');
+                const p = document.createElement('p');
+                p.className = who; // 'user' or 'bot'
+                // use textContent to avoid injecting HTML
+                p.textContent = text;
+                chatWindow.appendChild(p);
+                // keep the latest visible
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            }
+
+            function processMessage(message) {
+                log('processing message: ' + message);
+                const response = getResponse(message || '');
+                // output bot response after a short delay to feel conversational
+                setTimeout(() => appendMessage(response, 'bot'), 150);
+            }
+
+            function send() {
+                log('sending...');
+                const messageBox = document.getElementById('messageBox');
+                const message = messageBox.value.trim();
+                if (!message) return;
+                messageBox.value = '';
+                messageBox.focus();
+                appendMessage(message, 'user');
+                processMessage(message);
+            }
+
+            function init() {
+                log('Loading App...');
+                document.getElementById('sendBtn').addEventListener('click', send);
+                
+                document.getElementById('messageBox').addEventListener('keydown', (e) => { // allow Enter to send (Shift+Enter for newline)
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        send();
+                    }
+                });
+            }
+
+            window.addEventListener('DOMContentLoaded', init);
+        </script>
+
+
+    </body>
+</html>
