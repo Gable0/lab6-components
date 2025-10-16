@@ -50,7 +50,6 @@ class SimpleChat extends HTMLElement {
 
     handleKeyDown(event) {
         if (event.key === 'Enter' && !event.shiftKey) {
-            // <input type="text"> already submits on Enter, but we guard for future markup changes.
             event.preventDefault();
             this.sendCurrentMessage();
         }
