@@ -39,7 +39,7 @@ body {
 }
 
 .chat-container {
-    width: min(90vw, 960px);
+    width: min(90vw, 540px);
     border-radius: 24px;
     background: var(--chat-background);
     box-shadow: 0 24px 60px var(--chat-shadow);
