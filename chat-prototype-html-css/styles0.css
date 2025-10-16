@@ -1,5 +1,21 @@
+:root {
+    --page-background: #a089d5;
+    --chat-background: #ffffff;
+    --chat-shadow: rgba(15, 38, 88, 0.15);
+    --header-gradient-start: #5387d0;
+    --header-gradient-end: #2f6fd3;
+    --header-text: #ffffff;
+    --header-subtext-opacity: 0.85;
+    --window-gradient-start: #f7f9ff;
+    --window-gradient-end: #f3f5fb;
+    --bot-bubble: #e9e9e9;
+    --user-bubble: #2261d1;
+    --notice-background: #ffe9ab;
+    --notice-text: rgba(31, 45, 61, 0.85);
+}
+
 body {
-    background-color: #a089d5;
+    background-color: var(--page-background);
     margin: 0;
     padding: 0;
     display: flex;
@@ -22,13 +38,13 @@ body {
     display: flex;
     flex-direction: column;
     border-radius: 24px;
-    background: #ffffff;
-    box-shadow: 0 24px 60px rgba(15, 38, 88, 0.15);
+    background: var(--chat-background);
+    box-shadow: 0 24px 60px var(--chat-shadow);
 }
 
 .chat-header {
-    background: linear-gradient(135deg, #5387d0, #2f6fd3);
-    color: #ffffff;
+    background: linear-gradient(135deg, var(--header-gradient-start), var(--header-gradient-end));
+    color: var(--header-text);
     padding: 28px 16px 20px;
     text-align: center;
     border-radius: 24px 24px 0 0;
@@ -43,7 +59,7 @@ body {
 .chat-header p {
     margin: 6px 0 0 0;
     font-size: 0.95rem;
-    opacity: 0.85;
+    opacity: var(--header-subtext-opacity);
 }
 
 .chat-window {
@@ -51,7 +67,7 @@ body {
     width: 100%;
     max-height: 360px;
     padding: 26px 24px 30px;
-    background: linear-gradient(180deg, #f7f9ff 0%, #f3f5fb 100%);
+    background: linear-gradient(180deg, var(--window-gradient-start) 0%, var(--window-gradient-end) 100%);
     box-sizing: border-box;
     overflow-y: auto;
     border-radius: 0;
@@ -70,7 +86,7 @@ body {
 }
 
 .message.bot {
-    background: #e9e9e9;
+    background: var(--bot-bubble);
     color: #000000;
     float: left;
     clear: both;
@@ -79,7 +95,7 @@ body {
 }
 
 .message.user {
-    background-color: #2261d1;
+    background-color: var(--user-bubble);
     color: #ffffff;
     float: right;
     clear: both;
@@ -92,7 +108,7 @@ body {
     flex-direction: column;
     gap: 14px;
     padding: 18px 20px 22px;
-    background: #ffffff;
+    background: var(--chat-background);
     border-radius: 0 0 24px 24px;
     border-top: 1px solid rgba(22, 42, 88, 0.06);
 }
@@ -134,9 +150,9 @@ body {
     align-items: flex-start;
     gap: 10px;
     padding: 12px 14px;
-    background: #ffe9ab;
+    background: var(--notice-background);
     border-radius: 14px;
-    color: rgba(31, 45, 61, 0.85);
+    color: var(--notice-text);
     font-size: 0.88rem;
 }
 

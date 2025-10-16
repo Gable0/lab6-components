@@ -1,9 +1,27 @@
-* {
-    box-sizing: border-box;
+:root {
+    --page-background: #a089d5;
+    --chat-background: #ffffff;
+    --chat-shadow: rgba(15, 38, 88, 0.15);
+    --header-gradient-start: #5387d0;
+    --header-gradient-end: #2f6fd3;
+    --header-text: #ffffff;
+    --header-subtext-opacity: 0.85;
+    --window-gradient-start: #f7f9ff;
+    --window-gradient-end: #f3f5fb;
+    --user-bubble: #2261d1;
+    --bot-bubble: #ffffff;
+    --input-background: #f5f7fb;
+    --input-border: rgba(30, 64, 175, 0.25);
+    --button-gradient-start: #3180ff;
+    --button-gradient-end: #2261d1;
+    --button-hover-start: #2b6ee5;
+    --button-hover-end: #1b56b8;
+    --button-disabled-background: #e0e3ed;
+    --button-disabled-text: #9aa4bc;
 }
 
 body {
-    background-color: #a089d5;
+    background-color: var(--page-background);
     margin: 0;
     font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     display: flex;
@@ -23,18 +41,19 @@ body {
 .chat-container {
     width: min(90vw, 960px);
     border-radius: 24px;
-    background: #ffffff;
-    box-shadow: 0 24px 60px rgba(15, 38, 88, 0.15);
+    background: var(--chat-background);
+    box-shadow: 0 24px 60px var(--chat-shadow);
     display: flex;
     flex-direction: column;
     overflow: hidden;
 }
 
 .chat-header {
-    background: linear-gradient(135deg, #5387d0, #2f6fd3);
-    color: #ffffff;
+    background: linear-gradient(135deg, var(--header-gradient-start), var(--header-gradient-end));
+    color: var(--header-text);
     padding: 32px 16px 24px;
     text-align: center;
+    border-radius: 24px 24px 0 0;
 }
 
 .chat-header h1 {
@@ -45,14 +64,14 @@ body {
 .chat-header p {
     margin: 8px 0 0;
     font-size: 0.95rem;
-    opacity: 0.85;
+    opacity: var(--header-subtext-opacity);
 }
 
 simple-chat {
     display: flex;
     flex-direction: column;
     gap: 0;
-    background: linear-gradient(180deg, #f7f9ff 0%, #f3f5fb 100%);
+    background: transparent;
 }
 
 simple-chat .messages {
@@ -61,6 +80,8 @@ simple-chat .messages {
     padding: 24px 24px 32px;
     overflow-y: auto;
     position: relative;
+    background: linear-gradient(180deg, var(--window-gradient-start) 0%, var(--window-gradient-end) 100%);
+    border-radius: 0 0 24px 24px;
 }
 
 simple-chat .messages::after {
@@ -80,7 +101,7 @@ simple-chat .message {
 }
 
 simple-chat .message.user {
-    background-color: #2261d1;
+    background-color: var(--user-bubble);
     color: #ffffff;
     float: right;
     clear: both;
@@ -90,7 +111,7 @@ simple-chat .message.user {
 }
 
 simple-chat .message.bot {
-    background: #ffffff;
+    background: var(--bot-bubble);
     color: #1f2d3d;
     float: left;
     clear: both;
@@ -103,7 +124,7 @@ simple-chat .input-area {
     display: flex;
     gap: 16px;
     padding: 20px 24px;
-    background: #ffffff;
+    background: var(--chat-background);
     border-top: 1px solid rgba(22, 42, 88, 0.06);
 }
 
@@ -111,8 +132,8 @@ simple-chat .input-area input[type="text"] {
     flex: 1;
     padding: 14px 18px;
     border-radius: 999px;
-    border: 1px solid rgba(30, 64, 175, 0.25);
-    background: #f5f7fb;
+    border: 1px solid var(--input-border);
+    background: var(--input-background);
     font-size: 1rem;
     color: #1f2d3d;
     box-shadow: inset 0 1px 2px rgba(16, 24, 64, 0.08);
@@ -126,7 +147,7 @@ simple-chat .input-area input[type="text"]:focus {
 
 simple-chat .input-area button {
     padding: 0 24px;
-    background: linear-gradient(135deg, #3180ff, #2261d1);
+    background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
     color: #ffffff;
     border: none;
     border-radius: 999px;
@@ -137,15 +158,15 @@ simple-chat .input-area button {
 }
 
 simple-chat .input-area button:disabled {
-    background: #e0e3ed;
-    color: #9aa4bc;
+    background: var(--button-disabled-background);
+    color: var(--button-disabled-text);
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
 }
 
 simple-chat .input-area button:not(:disabled):hover {
-    background: linear-gradient(135deg, #2b6ee5, #1b56b8);
+    background: linear-gradient(135deg, var(--button-hover-start), var(--button-hover-end));
 }
 
 simple-chat .input-area button:not(:disabled):active {
