@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simple Chat - Web Component</title>
-    <link rel="stylesheet" href="styles2.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Chat · Web Component</title>
+    <link rel="stylesheet" href="../reset.css">
+    <link rel="stylesheet" href="styles2.css">
 </head>
 <body>
-    <main class="page">
-        <div class="chat-container">
+    <simple-chat>
+        <section class="chat-container">
             <header class="chat-header">
                 <h1>Chat Assistant</h1>
                 <p>Web Components · Progressive Enhancement</p>
             </header>
-            <simple-chat>
-                <div class="messages">
-                    <div class="message bot">Hello! How can I help you?</div>
-                </div>
-                <form class="input-area">
-                    <input type="text" placeholder="Type a message..." aria-label="Message" />
-                    <button type="submit">Send</button>
-                </form>
-            </simple-chat>
-        </div>
-    </main>
+            <section class="messages">
+                <p class="message bot">Hello! How can I help you?</p>
+            </section>
+            <form class="input-area">
+                <input type="text" placeholder="Type a message..." aria-label="Message">
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </simple-chat>
     <script type="module" src="chat-component.js"></script>
 </body>
 </html>
