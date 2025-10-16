@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6 - Component Approaches</title>
+    <link rel="stylesheet" href="mainStyles.css">
+</head>
+
+<body>
+    <main id="main-container">
+        <div id="page-header-container">
+            <h3 id="page-header">Chat Component</h3>
+            <h4 id="page-desc">Prototype + Three Approaches to Component-Based Thinking</h4>
+        </div>
+        <div id="sample-container">
+            <div class="sample">
+                <h3 id="prototype-sample" class="approach-label">Prototype</h3>
+                <h3 class="sample-title">Pure HTML & CSS</h3>
+                <h3 class="sample-description"> A static mockup using only HTML and CSS to work out the interface
+                    design</h3>
+                <ul class="sample-features">
+                    <li>&#9989; No dependencies</li>
+                    <li>&#9989; Always accessible</li>
+                    <li>&#9989; imple to understand</li>
+                    <li>&#9989; No interactivity</li>
+                </ul>
+                <a class="sample-demo-link" href="./chat-prototype-html-css/index0.html">View Demo &#10142;</a>
+            </div>
+
+            <div class="sample">
+                <h3 class="approach-label">Approach 1</h3>
+                <h3 class="sample-title">DOM Manipulation</h3>
+                <h3 class="sample-description">Interactive chat using vanilla JavaScript and standard DOM methods</h3>
+                <ul class="sample-features">
+                    <li>&#9989; Full interactivity</li>
+                    <li>&#9989; Eliza-style bot</li>
+                    <li>&#9989; Standard JavaScript</li>
+                    <li>&#9989; No Encapsulation</li>
+                </ul>
+                <a class="sample-demo-link" href="./chat-dom/index1.html">View Demo &#10142;</a>
+            </div>
+
+            <div class="sample">
+                <h3 class="approach-label">Approach 2</h3>
+                <h3 class="sample-title">Progressive Enhancement</h3>
+                <h3 class="sample-description">Custom element that enhances existing HTML markup with JavaScript</h3>
+                <ul class="sample-features">
+                    <li>&#9989; Graceful degredation</li>
+                    <li>&#9989; Semantic base HTML</li>
+                    <li>&#9989; Web Components API</li>
+                    <li>&#9989; Global styles</li>
+                </ul>
+                <a class="sample-demo-link" href="./chat-webcomponent-pe/index2.html">View Demo &#10142;</a>
+            </div>
+
+            <div class="sample">
+                <h3 class="approach-label">Approach 3</h3>
+                <h3 class="sample-title">Web Component</h3>
+                <h3 class="sample-description">Fully encapsulated custom element with Shadow DOM and internal styles
+                </h3>
+                <ul class="sample-features">
+                    <li>
+                        &#9989; Complete encapsulation
+                    </li>
+                    <li>&#9989; Shadow DOM</li>
+                    <li>&#9989; Self-contained</li>
+                    <li>&#9989; Highly reusable</li>
+                </ul>
+                <a class="sample-demo-link" href="./chat-webcomponent-gd/index3.html">View Demo &#10142;</a>
+            </div>
+        </div>
+        </br>
+        <p id="footer-text">COMP 305 Fall 2025 · Gable Krich</p>
+    </main>
+</body>
+
+</html>
