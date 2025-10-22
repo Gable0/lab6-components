@@ -2,6 +2,8 @@
 
 Fall 2025 · COMP 305
 
+## Link to the Live Page using Netlify: https://gable0comp305lab6.netlify.app/
+
 
 ## Thoughtful Comparison of Approaches
 - **Prototype (HTML & CSS only):** Shows the look of the chat but does not send messages.
